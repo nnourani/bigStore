@@ -1,7 +1,10 @@
+import Products from "./views/Products";
+
 require('./bootstrap');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import vuetify from "./vuetify";
 import {BootstrapVue, IconsPlugin} from 'bootstrap-vue';
 
 Vue.use(VueRouter);
@@ -38,7 +41,12 @@ const router = new VueRouter({
             component: Register
         },
         {
-            path: '/products/:id',
+            path: '/products/:categoryType/:category?',
+            name: 'products',
+            component: Products
+        },
+        {
+            path: '/product/:id',
             name: 'single-products',
             component: SingleProduct
         },
@@ -118,5 +126,6 @@ const app = new Vue({
     components: {
         App
     },
+    vuetify,
     router
 });
